@@ -31,7 +31,7 @@ has job_handle => (
     default => '',
 );
 
-has [qw/on_created on_data on_complete on_fail on_status on_warning/] => (
+has [qw/on_created on_data on_complete on_fail on_status on_warning on_exception/] => (
     is      => 'rw',
     isa     => 'CodeRef',
     default => sub { sub {} },
@@ -59,6 +59,7 @@ sub BUILD {
         on_fail      => $self->on_fail,
         on_status    => $self->on_status,
         on_warning   => $self->on_warning,
+		on_exception => $self->on_exception,
     );
 }
 
